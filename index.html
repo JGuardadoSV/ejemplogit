@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nexo Digital: desarrollo web simple, rápido y pensado para hacer crecer tu negocio.">
+  <title>Nexo Digital | Desarrollo web</title>
+  <style>
+    :root {
+      --background: #f7f8fc;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --primary: #5b5bf7;
+      --primary-dark: #4444d7;
+      --border: #e8eaf2;
+      --shadow: 0 20px 50px rgba(38, 43, 91, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      margin: 0 auto;
+      max-width: 1120px;
+      padding: 0 24px;
+    }
+
+    header {
+      padding: 24px 0;
+    }
+
+    .nav {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .logo {
+      align-items: center;
+      display: flex;
+      font-size: 1.15rem;
+      font-weight: 800;
+      gap: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .logo-mark {
+      align-items: center;
+      background: var(--primary);
+      border-radius: 10px;
+      color: white;
+      display: flex;
+      font-size: 0.85rem;
+      height: 34px;
+      justify-content: center;
+      width: 34px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      align-items: center;
+      display: grid;
+      gap: 64px;
+      grid-template-columns: 1.05fr 0.95fr;
+      min-height: 570px;
+      padding: 64px 0 88px;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.75rem, 6vw, 5rem);
+      letter-spacing: -0.07em;
+      line-height: 1.02;
+      max-width: 650px;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 24px 0 34px;
+      max-width: 540px;
+    }
+
+    .actions {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .button {
+      border-radius: 10px;
+      display: inline-block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 14px 21px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--primary);
+      box-shadow: 0 8px 18px rgba(91, 91, 247, 0.22);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .button-secondary {
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      color: var(--primary);
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      min-height: 360px;
+      overflow: hidden;
+      padding: 24px;
+      position: relative;
+    }
+
+    .window-bar {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 28px;
+    }
+
+    .window-bar span {
+      background: #d9dcec;
+      border-radius: 50%;
+      height: 9px;
+      width: 9px;
+    }
+
+    .window-content {
+      background: #f2f3ff;
+      border-radius: 16px;
+      height: 270px;
+      padding: 28px;
+      position: relative;
+    }
+
+    .window-content::before,
+    .window-content::after {
+      background: #d8d9fb;
+      border-radius: 6px;
+      content: "";
+      display: block;
+      height: 12px;
+      margin-bottom: 12px;
+      width: 48%;
+    }
+
+    .window-content::after {
+      background: var(--primary);
+      height: 70px;
+      margin-top: 32px;
+      opacity: 0.85;
+      width: 100%;
+    }
+
+    .floating-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      bottom: 24px;
+      box-shadow: 0 12px 25px rgba(38, 43, 91, 0.12);
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 14px 16px;
+      position: absolute;
+      right: 14px;
+    }
+
+    .benefits {
+      border-top: 1px solid var(--border);
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 56px 0 70px;
+    }
+
+    .benefit h2 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .benefit p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .icon {
+      align-items: center;
+      background: #e9e9ff;
+      border-radius: 10px;
+      color: var(--primary);
+      display: flex;
+      font-size: 1.15rem;
+      height: 38px;
+      justify-content: center;
+      margin-bottom: 16px;
+      width: 38px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 26px 0;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        gap: 40px;
+        grid-template-columns: 1fr;
+        padding: 50px 0 70px;
+      }
+
+      .hero-card {
+        min-height: 300px;
+      }
+
+      .window-content {
+        height: 215px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+        padding: 42px 0 54px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav-link {
+        display: none;
+      }
+
+      .hero-card {
+        padding: 16px;
+      }
+
+      .window-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#inicio" aria-label="Nexo Digital, inicio">
+        <span class="logo-mark">N</span>
+        Nexo Digital
+      </a>
+      <a class="nav-link" href="#contacto">Hablemos</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="container hero">
+      <div>
+        <p class="eyebrow">Desarrollo web para crecer</p>
+        <h1>Ideas simples. Productos digitales que funcionan.</h1>
+        <p class="hero-copy">
+          Diseñamos y desarrollamos sitios web modernos para empresas que quieren destacar, conectar con sus clientes y avanzar.
+        </p>
+        <div class="actions">
+          <a class="button button-primary" href="mailto:hola@nexodigital.com">Empezar un proyecto</a>
+          <a class="button button-secondary" href="#servicios">Conoce más →</a>
+        </div>
+      </div>
+
+      <div class="hero-card" aria-label="Vista previa de un proyecto digital">
+        <div class="window-bar" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="window-content">
+          <div class="floating-note">✓ Proyecto listo para crecer</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container benefits" id="servicios" aria-label="Nuestros servicios">
+      <article class="benefit">
+        <div class="icon" aria-hidden="true">✦</div>
+        <h2>Diseño claro</h2>
+        <p>Experiencias visuales atractivas, fáciles de usar y alineadas con tu marca.</p>
+      </article>
+      <article class="benefit">
+        <div class="icon" aria-hidden="true">⚡</div>
+        <h2>Desarrollo ágil</h2>
+        <p>Construimos soluciones rápidas, flexibles y preparadas para tus próximos pasos.</p>
+      </article>
+      <article class="benefit">
+        <div class="icon" aria-hidden="true">♡</div>
+        <h2>Trato cercano</h2>
+        <p>Te acompañamos en cada etapa con comunicación directa y sin complicaciones.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="container">
+      © 2025 Nexo Digital · Creamos lo que sigue.
+    </div>
+  </footer>
+</body>
+</html>
