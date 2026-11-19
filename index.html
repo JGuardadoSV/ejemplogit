@@ -156,6 +156,62 @@
       color: var(--primary);
     }
 
+    .modal {
+      align-items: center;
+      background: rgba(23, 32, 51, 0.55);
+      display: flex;
+      inset: 0;
+      justify-content: center;
+      padding: 24px;
+      position: fixed;
+      z-index: 10;
+    }
+
+    .modal[hidden] {
+      display: none;
+    }
+
+    .modal-content {
+      background: var(--surface);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      max-width: 440px;
+      padding: 32px;
+      position: relative;
+      width: 100%;
+    }
+
+    .modal-content h2 {
+      font-size: 1.55rem;
+      margin-bottom: 10px;
+    }
+
+    .modal-content p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      padding: 4px;
+      position: absolute;
+      right: 18px;
+      top: 18px;
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
     .hero-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -315,7 +371,7 @@
         </p>
         <div class="actions">
           <a class="button button-primary" href="mailto:hola@nexodigital.com">Empezar un proyecto</a>
-          <a class="button button-secondary" href="#servicios">Conoce más →</a>
+          <button class="button button-secondary" id="open-modal" type="button">Conoce más →</button>
         </div>
       </div>
 
@@ -348,10 +404,52 @@
     </section>
   </main>
 
+  <div class="modal" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-content">
+      <button class="modal-close" id="close-modal" type="button" aria-label="Cerrar ventana">×</button>
+      <h2 id="modal-title">Hagamos crecer tu idea</h2>
+      <p>Cuéntanos qué necesitas y te ayudaremos a convertirlo en una solución digital clara, útil y lista para crecer.</p>
+      <a class="button button-primary" href="mailto:hola@nexodigital.com">Escribirnos</a>
+    </div>
+  </div>
+
   <footer id="contacto">
     <div class="container">
       © 2026 Nexo Digital · Creamos lo que sigue.
     </div>
   </footer>
+
+  <script>
+    const modal = document.getElementById('info-modal');
+    const openModalButton = document.getElementById('open-modal');
+    const closeModalButton = document.getElementById('close-modal');
+
+    function openModal() {
+      modal.hidden = false;
+      document.body.classList.add('modal-open');
+      closeModalButton.focus();
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.classList.remove('modal-open');
+      openModalButton.focus();
+    }
+
+    openModalButton.addEventListener('click', openModal);
+    closeModalButton.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.hidden) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
